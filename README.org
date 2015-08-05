@@ -1,0 +1,22 @@
+* TeX-fold-linebreaks
+A minor mode for folding linebreaks after sentences in TeX-fold-mode in Emacs
+
+NOTE: Still pretty beta, but it has worked ok for me.
+
+If you are writing LaTeX with a "one-sentence-per-line" approach (to simplify version control) but still would like your code to be displayed in a more "document-like" way, this package is for you.
+
+The minor mode defined in this package adds folding of "sentence line breaks" to the usual commands of ~TeX-fold~ (part of AUCTeX) making sentences ended by a punctuation character (customizable in ~tex-fold-linebreaks-sentence-end-punctuation~) look like ordinary sentences.
+
+By default this for example means that
+#+BEGIN_EXAMPLE
+Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+Mauris pellentesque fringilla justo, quis dapibus velit tincidunt quis?
+Quisque varius ligula arcu, ut imperdiet risus maximus nec.
+#+END_EXAMPLE
+will be folded to
+#+BEGIN_SRC emacs-lisp
+Lorem ipsum dolor sit amet, consectetur adipiscing elit⁎ Mauris pellentesque fringilla justo, quis dapibus velit tincidunt quis❓  Quisque varius ligula arcu, ut imperdiet risus maximus nec⁎
+#+END_SRC
+when any ~tex-fold~ command that affects this text (e.g. ~tex-fold-region~ or ~tex-fold-buffer~) is issued. The punctuation characters are replaced by slightly fancier unicode variants to emphasize that they have folded a line break (configurable in ~tex-fold-linebreaks-sentence-end-punctuation~)
+
+Additionally, when enabled, the minor mode makes the punctuation characters configured in ~tex-fold-linebreaks-sentence-end-punctuation~ insert an additional line break when typed, unless we are typing some common expressions where a punctuation character shouldn't end a sentence (defined in ~tex-fold-linebreaks-non-sentence-punctuation-regexp~). This feature can be disabled by setting ~tex-fold-linebreaks-rebind-characters~ to ~nil~.
