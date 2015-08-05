@@ -146,7 +146,7 @@ strings in `tex-fold-linebreaks-sentence-end-punctuation'."
 
 ;; TODO, is it more reasonable to use syntax tables and check for word endings?
 (defun tex-fold-linebreaks-insert-punctuation (&optional arg)
-  "Insert linebreak along with calling character in
+  "Insert linebreak along with calling character.
 Bound to characters defined in
 `tex-fold-linebreaks-sentence-end-punctuation' in
 `tex-fold-linebreaks-mode'. Linebreak is inserted if point is not
