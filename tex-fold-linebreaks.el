@@ -133,7 +133,7 @@ strings in `tex-fold-linebreaks-sentence-end-punctuation'."
         (goto-char beg)
         (let* ((ms1 (match-string 1))
                (ms2 (match-string 2))
-               (r1 (assoc ms1 tex-fold-linebreaks-sentence-end-punctuation))
+               (r1 (cdr (assoc ms1 tex-fold-linebreaks-sentence-end-punctuation)))
                (rep (concat
                      (cdr r1)
                      (if (string= ms1 ms2)
