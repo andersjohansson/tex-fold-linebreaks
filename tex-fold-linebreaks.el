@@ -56,7 +56,7 @@ stand out."
   "Whether punctuation characters should insert a linebreak.
 
 If non-nil the characters defined in
-`tex-fold-linebreaks-end-sentence-punctuation' is rebound to add
+`tex-fold-linebreaks-sentence-end-punctuation' is rebound to add
 a linebreak in `tex-fold-linebreaks-mode'"
   :type '(choice (const :tag "Enable" t) (const :tag "Disable" nil))
   :group 'TeX-fold)
@@ -102,8 +102,6 @@ prefix arg"
            (lambda (c) (when (= 1 (length (car c)))
                     (cons (kbd (car c)) 'tex-fold-linebreaks-insert-punctuation)))
            tex-fold-linebreaks-sentence-end-punctuation)))))
-
-
 
 (defun tex-fold-linebreaks--search-forward-linebreak-start (&optional limit)
   "Search forward for a linebreak start from point till LIMIT.
