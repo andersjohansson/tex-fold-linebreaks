@@ -135,7 +135,7 @@ strings in `tex-fold-linebreaks-sentence-end-punctuation'."
                (ms2 (match-string 2))
                (r1 (assoc ms1 tex-fold-linebreaks-sentence-end-punctuation))
                (rep (concat
-                     r1
+                     (cdr r1)
                      (if (string= ms1 ms2)
                          " " ;normal sentence end
                        "\n\t")))) ; we had \n\n, represent it as indent
