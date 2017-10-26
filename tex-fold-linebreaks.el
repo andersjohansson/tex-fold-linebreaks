@@ -3,7 +3,9 @@
 ;; Copyright (C) 2015 Anders Johansson
 
 ;; Author: Anders Johansson <mejlaandersj@gmail.com>
-;; Version: 0.1
+;; Version: 0.2
+;; Created: 2015-06-03
+;; Modified: 2017-10-26
 ;; Package-Requires: ((emacs "24.4") (auctex "11.86"))
 ;; Keywords: tex, wp
 ;; URL: http://github.com/andersjohansson/tex-fold-linebreaks
@@ -76,7 +78,7 @@ if not in certain positions matched by
 `tex-fold-linebreaks-non-sentence-punctuation' or preceded by a
 prefix arg"
 
-  ;; we hack minor-mode-map-alist instead
+  ;; we hack minor-mode-map-alist instead, to insure we get precedence
   ;;  :keymap 'tex-fold-linebreaks-mode-map
   :lighter "tfl"
   (if tex-fold-linebreaks-mode
@@ -116,7 +118,7 @@ If LIMIT is omitted, search till the end of the buffer."
 strings in `tex-fold-linebreaks-sentence-end-punctuation'."
   (concat "\\("
           (regexp-opt
-           (mapcar (lambda (c) (car c)) tex-fold-linebreaks-sentence-end-punctuation) t)
+           (mapcar #'car tex-fold-linebreaks-sentence-end-punctuation) t)
           "\n?\\)\n"))
 
 (defun tex-fold-linebreaks--fold-region-linebreaks (start end)
