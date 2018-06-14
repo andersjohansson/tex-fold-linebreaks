@@ -1,3 +1,5 @@
+*NOTE:* Moved to https://gitlab.com/andersjohansson/tex-fold-linebreaks
+
 * TeX-fold-linebreaks
 A minor mode for folding linebreaks after sentences in TeX-fold-mode in Emacs
 
